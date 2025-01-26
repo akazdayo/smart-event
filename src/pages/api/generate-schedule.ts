@@ -20,7 +20,7 @@ export const POST: APIRoute = async ({ request }) => {
       イベント開催開始日: ${eventData.eventStartDate}
       イベント開催終了日: ${eventData.eventEndDate}
       全体終了日: ${eventData.endDate}
-      参加者数: ${eventData.participants}人
+      イベント参加者数: ${eventData.participants}人
 
       以下の形式でMermaid Ganttチャートのコードを生成してください：
       gantt

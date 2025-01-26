@@ -10,6 +10,7 @@ interface EventData {
   startDate: string;
   endDate: string;
   participants: number;
+  staff: number;
 }
 
 mermaid.initialize({
@@ -36,7 +37,8 @@ const EventForm: Component = () => {
     eventEndDate: '',
     startDate: '',
     endDate: '',
-    participants: 1
+    participants: 1,
+    staff: 1,
   });
 
   const [isLoading, setIsLoading] = createSignal(false);
@@ -147,17 +149,31 @@ const EventForm: Component = () => {
         </div>
       </div>
 
-      <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">参加者数</label>
-        <input
-          type="number"
-          required
-          min="1"
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-          value={eventData().participants}
-          onChange={(e) => setEventData({ ...eventData(), participants: parseInt(e.currentTarget.value) })}
-        />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">参加者数</label>
+          <input
+            type="number"
+            required
+            min="1"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            value={eventData().participants}
+            onChange={(e) => setEventData({ ...eventData(), participants: parseInt(e.currentTarget.value) })}
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">スタッフ数</label>
+          <input
+            type="number"
+            required
+            min="1"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            value={eventData().staff}
+            onChange={(e) => setEventData({ ...eventData(), staff: parseInt(e.currentTarget.value) })}
+          />
+        </div>
       </div>
+
 
       <button
         type="submit"
