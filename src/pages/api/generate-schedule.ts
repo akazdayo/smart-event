@@ -16,8 +16,10 @@ export const POST: APIRoute = async ({ request }) => {
       以下のイベントのスケジュールを準備期間のタスクから、終了後の片付けまでとても細かくタスクを作成してください。また、タスク量に制限はありません。書けるだけ書いてください。出力はMermaidコードのみにしてください。タスクには全て名前をつけてください。：
       タイトル: ${eventData.title}
       説明: ${eventData.description}
-      開始日: ${eventData.startDate}
-      終了日: ${eventData.endDate}
+      準備開始日: ${eventData.startDate}
+      イベント開催開始日: ${eventData.eventStartDate}
+      イベント開催終了日: ${eventData.eventEndDate}
+      全体終了日: ${eventData.endDate}
       参加者数: ${eventData.participants}人
 
       以下の形式でMermaid Ganttチャートのコードを生成してください：

@@ -5,6 +5,8 @@ import mermaid from 'mermaid';
 interface EventData {
   title: string;
   description: string;
+  eventStartDate: string;
+  eventEndDate: string;
   startDate: string;
   endDate: string;
   participants: number;
@@ -30,6 +32,8 @@ const EventForm: Component = () => {
   const [eventData, setEventData] = createSignal<EventData>({
     title: '',
     description: '',
+    eventStartDate: '',
+    eventEndDate: '',
     startDate: '',
     endDate: '',
     participants: 1
@@ -53,7 +57,7 @@ const EventForm: Component = () => {
       let schedule = data.schedule;
       schedule = schedule.replace("```mermaid", "")
       schedule = schedule.replace("```", "");
-      console.debug('Data:', data);
+
       const scheduleContent = document.getElementById('schedule-content');
       if (scheduleContent) {
         mermaid.render('gantt-chart', schedule).then((result) => {
@@ -97,7 +101,31 @@ const EventForm: Component = () => {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">開始日</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">イベント開催開始日</label>
+          <input
+            type="date"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            value={eventData().eventStartDate}
+            onChange={(e) => setEventData({ ...eventData(), eventStartDate: e.currentTarget.value })}
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">イベント開催終了日</label>
+          <input
+            type="date"
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            value={eventData().eventEndDate}
+            onChange={(e) => setEventData({ ...eventData(), eventEndDate: e.currentTarget.value })}
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">準備開始日</label>
           <input
             type="date"
             required
@@ -108,7 +136,7 @@ const EventForm: Component = () => {
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">終了日</label>
+          <label class="block text-sm font-medium text-gray-700 mb-1">全体終了日</label>
           <input
             type="date"
             required
