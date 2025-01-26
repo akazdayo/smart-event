@@ -5,8 +5,32 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const eventData = await request.json();
-    
+    if (!request.headers.get('Content-Type')?.includes('application/json')) {
+      return new Response(JSON.stringify({ error: `Content-Type must be application/json, ${request.json()}` }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    let eventData;
+    try {
+      eventData = await request.json();
+    } catch (e) {
+      console.dir(request);
+      return new Response(JSON.stringify({ error: 'Invalid JSON body' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    if (!eventData.title || !eventData.description || !eventData.startDate || 
+        !eventData.endDate || !eventData.participants) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     // Initialize Gemini
     const genAI = new GoogleGenerativeAI(import.meta.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
