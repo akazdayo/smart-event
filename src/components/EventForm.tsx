@@ -42,12 +42,13 @@ const EventForm: Component = () => {
   });
 
   const [isLoading, setIsLoading] = createSignal(false);
+  const [useBeta, setUseBeta] = createSignal(false);
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('/api/generate-schedule', {
+      const response = await fetch(useBeta() ? '/api/generate-schedule-beta' : '/api/generate-schedule', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -174,6 +175,17 @@ const EventForm: Component = () => {
         </div>
       </div>
 
+      <div class="flex items-center">
+        <input
+          type="checkbox"
+          id="useBeta"
+          class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          onChange={(e) => setUseBeta(e.target.checked)}
+        />
+        <label for="useBeta" class="ml-2 block text-sm text-gray-900">
+          ベータ版の生成エンジンを使用する
+        </label>
+      </div>
 
       <button
         type="submit"
