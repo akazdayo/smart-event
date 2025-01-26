@@ -5,7 +5,7 @@ import solidJs from '@astrojs/solid-js';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  output: 'server',
+  output: 'static',
   integrations: [tailwind(), solidJs()],
   adapter: cloudflare()
 });
