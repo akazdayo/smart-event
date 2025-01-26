@@ -58,89 +58,47 @@ our [Discord server](https://astro.build/chat).
 
 ```mermaid
 gantt
-    title イベントスケジュール
+    title susuru イベントスケジュール
     dateFormat YYYY-MM-DD
-    section 準備段階
-        イベント企画          : 2024-07-01, 7d
-        目的・テーマ明確化   : 2024-07-01, 2d
-        ターゲット定義       : after 目的・テーマ明確化, 2d
-        内容詳細設計       : after ターゲット定義, 5d
-        スケジュール作成 : after 内容詳細設計, 3d
-        会場選定・確保            : 2024-07-05, 5d
-        候補会場リストアップ       : 2024-07-05, 2d
-        会場下見・評価            : after 候補会場リストアップ, 2d
-        会場予約・契約            : after 会場下見・評価, 1d
-        予算策定                 : 2024-07-03, 3d
-        収入源検討 (参加費等) : 2024-07-03, 1d
-        費用項目洗い出し (会場費等) : after 収入源検討 (参加費等), 1d
-        収支計画作成             : after 費用項目洗い出し (会場費等), 1d
-        広報戦略策定             : 2024-07-10, 5d
-        広報ターゲット設定       : 2024-07-10, 2d
-        広報手段選定 (SNS等) : after 広報ターゲット設定, 2d
-        広報コンテンツ企画・作成   : after 広報手段選定 (SNS等), 5d
-        Webサイト/LP作成          : after 広報コンテンツ企画・作成, 7d
-        SNS運用準備 : after 広報コンテンツ企画・作成, 3d
-        チラシ・ポスターデザイン    : after 広報コンテンツ企画・作成, 5d
-        参加者募集開始           : 2024-07-25, 30d
-        募集開始告知 (Web等) : 2024-07-25, 2d
-        参加申込受付              : after 募集開始告知 (Web等), 30d
-        参加者リスト管理    : after 参加申込受付, 30d
-        必要物品リスト作成   : 2024-07-15, 3d
-        物品・備品調達            : 2024-07-18, 10d
-        調達先選定・見積依頼   : 2024-07-18, 3d
-        発注・契約              : after 調達先選定・見積依頼, 2d
-        納品・検品              : after 発注・契約, 5d
-        会場レイアウト設計        : 2024-07-20, 3d
-        座席・導線計画        : 2024-07-20, 2d
-        機材配置計画             : after 座席・導線計画, 1d
-        スタッフ募集・役割分担     : 2024-07-23, 5d
-        スタッフ募集告知         : 2024-07-23, 2d
-        スタッフ選考・面談        : after スタッフ募集告知, 2d
-        役割分担決定・通知        : after スタッフ選考・面談, 1d
-        スタッフ説明会・研修      : 2024-08-01, 3d
-        運営マニュアル作成 : 2024-08-04, 5d
-        緊急時対応マニュアル作成   : after 運営マニュアル作成, 2d
-        参加者へ事前連絡       : 2024-08-15, 3d
-        参加案内メール作成        : 2024-08-15, 1d
-        メール送信        : after 参加案内メール作成, 1d
-        問い合わせ対応準備       : after メール送信, 1d
-        会場設営                 : 2024-08-20, 2d
-        備品搬入・設置           : 2024-08-20, 1d
-        会場装飾               : after 備品搬入・設置, 1d
-        最終リハーサル・確認      : 2024-08-21, 1d
-        スタッフ最終打合せ     : 2024-08-21, 1d
-        機材動作確認             : after スタッフ最終打合せ, 1d
-        資料最終準備             : after 機材動作確認, 1d
-
-    section イベント当日
-        開場準備                 : 2024-08-22, 1h
-        受付準備 (受付設置等) : 2024-08-22, 30m
-        最終会場チェック           : after 受付準備 (受付設置等), 30m
-        参加者受付開始           : 2024-08-22, 1h
-        参加者誘導               : after 参加者受付開始, 4h
-        イベント開始 (オープニング) : 2024-08-22, 30m
-        プログラム1              : after イベント開始 (オープニング), 1h
-        プログラム2              : after プログラム1, 1h30m
-        休憩                     : after プログラム2, 30m
-        プログラム3              : after 休憩, 1h30m
-        プログラム4              : after プログラム3, 1h
-        イベント終了 (クロージング) : 2024-08-22, 30m
-        退場案内           : after イベント終了 (クロージング), 30m
-        アンケート実施 (QR案内等) : after 退場案内, 1h
-        忘れ物確認               : after アンケート実施 (QR案内等), 30m
-        参加者見送り               : after 忘れ物確認, 30m
-
-    section 終了後
-        会場撤収・片付け         : 2024-08-23, 3h
-        備品撤去・搬出           : 2024-08-23, 1h
-        会場清掃                 : after 備品撤去・搬出, 1h
-        ゴミ処理                 : after 会場清掃, 30m
-        忘れ物対応 (問合せ対応) : after ゴミ処理, 2d
-        レンタル品返却           : 2024-08-24, 1d
-        業者支払い手続き       : 2024-08-25, 2d
-        イベント報告書作成       : 2024-08-25, 3d
-        アンケート集計・分析 : after イベント報告書作成, 3d
-        反省会・改善点洗い出し    : 2024-08-28, 2d
-        スタッフ感謝         : 2024-08-30, 1d
-        イベント収支報告         : 2024-08-30, 2d
+    section 準備
+        動画企画立案 : task_plan, 2025-01-30, 1d
+        店舗情報収集 : task_store_info, after task_plan, 1d
+        撮影機材準備 : task_equipment_prep, after task_store_info, 1d
+        小道具準備 : task_props_prep, after task_equipment_prep, 1d
+        シナリオ作成 : task_scenario, after task_props_prep, 1d
+        関係者連絡調整 : task_contact, after task_scenario, 1d
+        衣装準備 : task_costume, after task_contact, 1d
+        移動手段確保 : task_transport, after task_costume, 1d
+        スケジュール最終確認 : task_schedule_check, after task_transport, 1d
+    section イベント当日準備
+        撮影機材最終チェック : task_equipment_final_check, 2025-01-31, 1h
+        小道具最終確認 : task_props_final_check, after task_equipment_final_check, 30m
+        衣装着用 : task_costume_wear, after task_props_final_check, 30m
+    section イベント開催 (撮影)
+        店舗へ移動 : task_move_store, 2025-01-31, 1h
+        着席 : task_seat, after task_move_store, 15m
+        水垢コップ発見・大声 : task_water_cup_shout, after task_seat, 5m
+        店主登場・チャーシューサービス : task_owner_charshu_service, after task_water_cup_shout, 5m
+        自己紹介・脅迫 : task_intro_threat, after task_owner_charshu_service, 3m
+        スープレビュー : task_soup_review, after task_intro_threat, 5m
+        虫発見・調味料倒し : task_bug_sauce_down, after task_soup_review, 5m
+        店主再登場・チャーシュー丼 : task_owner_charshu_don, after task_bug_sauce_down, 5m
+        麺レビュー : task_noodle_review, after task_owner_charshu_don, 5m
+        髪の毛発見・厨房へ : task_hair_kitchen, after task_noodle_review, 5m
+        店主土下座撮影 (サブチャンネル) : task_owner_dogeza, after task_hair_kitchen, 10m
+        ラーメン完食 (任意) : task_ramen_finish, after task_owner_dogeza, 15m
+        撮影機材撤収 : task_equipment_remove, after task_ramen_finish, 30m
+        店舗への挨拶・支払い : task_store_greet_pay, after task_equipment_remove, 15m
+    section イベント終了後 (片付け)
+        撮影データ整理 : task_data_organize, 2025-01-31, 1h
+        動画編集 (本チャンネル) : task_video_edit_main, after task_data_organize, 3h
+        動画編集 (サブチャンネル) : task_video_edit_sub, after task_video_edit_main, 2h
+        サムネイル作成 (本チャンネル) : task_thumbnail_main, after task_video_edit_sub, 1h
+        サムネイル作成 (サブチャンネル) : task_thumbnail_sub, after task_thumbnail_main, 30m
+        動画アップロード (本チャンネル) : task_upload_main, after task_thumbnail_sub, 1h
+        動画アップロード (サブチャンネル) : task_upload_sub, after task_upload_main, 30m
+        SNS告知 : task_sns_announce, after task_upload_sub, 30m
+        関係者への報告 : task_report_related, after task_sns_announce, 30m
+        後片付け : task_cleanup, after task_report_related, 1h
+        反省会 (任意) : task_reflection, after task_cleanup, 1h
 ```

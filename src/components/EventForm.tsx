@@ -42,7 +42,7 @@ const EventForm: Component = () => {
   });
 
   const [isLoading, setIsLoading] = createSignal(false);
-  const [useBeta, setUseBeta] = createSignal(false);
+  const [useBeta, setUseBeta] = createSignal(true);
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
