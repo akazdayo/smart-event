@@ -181,6 +181,7 @@ const EventForm: Component = () => {
           id="useBeta"
           class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
           onChange={(e) => setUseBeta(e.target.checked)}
+          checked={useBeta()}
         />
         <label for="useBeta" class="ml-2 block text-sm text-gray-900">
           ベータ版の生成エンジンを使用する
