@@ -4,6 +4,9 @@ import type { APIRoute } from "astro";
 import { ChatAnthropic } from "@langchain/anthropic";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
+import { config } from "dotenv";
+
+config();
 
 // Initialize Claude
 const model = new ChatAnthropic({
