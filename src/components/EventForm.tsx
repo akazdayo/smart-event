@@ -37,8 +37,8 @@ const EventForm: Component = () => {
 		eventEndDate: "",
 		startDate: "",
 		endDate: "",
-		participants: -1,
-		staff: -1,
+		participants: 1,
+		staff: 1,
 	});
 
 	const [isLoading, setIsLoading] = createSignal(false);
