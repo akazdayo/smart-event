@@ -42,10 +42,13 @@ const EventForm: Component = () => {
 	});
 
 	const [isLoading, setIsLoading] = createSignal(false);
+	const [errorMessage, setErrorMessage] = createSignal<string | null>(null);
 
 	const handleSubmit = async (e: Event) => {
 		e.preventDefault();
 		setIsLoading(true);
+		setErrorMessage(null);
+
 		try {
 			const response = await fetch("/api/generate-schedule", {
 				method: "POST",
@@ -54,9 +57,30 @@ const EventForm: Component = () => {
 				},
 				body: JSON.stringify(eventData()),
 			});
-			const data = await response.json();
+
+			if (!response.ok) {
+				throw new Error(
+					`サーバーエラー: ${response.status} ${response.statusText}`,
+				);
+			}
+
+			const contentType = response.headers.get("content-type");
+			if (!contentType || !contentType.includes("application/json")) {
+				throw new Error("サーバーからの応答がJSON形式ではありません");
+			}
+
+			const text = await response.text();
+			if (!text || text.trim() === "") {
+				throw new Error("サーバーからの応答が空です");
+			}
+
+			const data = JSON.parse(text);
 
 			let schedule = data.result;
+			if (!schedule) {
+				throw new Error("スケジュールデータが見つかりません");
+			}
+
 			schedule = schedule.replace(/```mermaid/g, "");
 			schedule = schedule.replace(/```/g, "");
 
@@ -72,6 +96,11 @@ const EventForm: Component = () => {
 			}
 		} catch (error) {
 			console.error("Error:", error);
+			setErrorMessage(
+				error instanceof Error
+					? error.message
+					: "スケジュール生成中にエラーが発生しました",
+			);
 		} finally {
 			setIsLoading(false);
 		}
@@ -215,6 +244,16 @@ const EventForm: Component = () => {
 					/>
 				</div>
 			</div>
+
+			{errorMessage() && (
+				<div
+					class="bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+					role="alert"
+				>
+					<strong class="font-bold">エラー: </strong>
+					<span class="block sm:inline">{errorMessage()}</span>
+				</div>
+			)}
 
 			<button
 				type="submit"
